@@ -1,0 +1,51 @@
+@address = http://localhost:8080/api/v1
+method = GET
+headers = {"Content-Type": "application/json"}
+body = {"username": "admin", "password": "admin"}
+###
+###
+POST {{address}}/auth/register
+Content-Type: application/json
+
+{
+    "email": "Negar123@example.com",
+    "password": "password",
+    "username": "Negar"
+} 
+
+### Create an Event
+POST {{address}}/events
+Content-Type: application/json
+
+{
+    "name": "API Learn",
+    "owner_id": 1,
+    "description": "This is an GOlang description",
+    "date": "2023-10-10",
+    "location": "Test Location"
+}
+
+### Retrieve all events
+GET {{address}}/events
+Content-Type: application/json
+
+### Update an event
+PUT {{address}}/events/1
+Content-Type: application/json
+
+{
+    "name": "Updated Golang Learn",
+    "owner_id": 2,
+    "description": "This is an Updated GOlang description",
+    "date": "2023-10-10",
+    "location": "Test Location"
+}
+
+
+### Delete an event
+DELETE {{address}}/events/1
+Content-Type: application/json
+
+### Retrieve Single Event
+GET {{address}}/events/3
+Content-Type: application/json
