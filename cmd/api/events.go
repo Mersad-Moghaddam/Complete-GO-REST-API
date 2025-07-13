@@ -133,7 +133,7 @@ func (app *Application) addAttendeeToEvent(c *gin.Context) {
 		return
 	}
 	// Retrieve the user from the database
-	userToAdd, err := app.models.Users.Get(userID)
+	userToAdd, err := app.models.Users.GetUser(userID)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to retrieve user"})
 		return

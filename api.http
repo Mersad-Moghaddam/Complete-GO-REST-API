@@ -4,23 +4,36 @@ headers = {"Content-Type": "application/json"}
 body = {"username": "admin", "password": "admin"}
 ###
 ###
+
+### POST user
 POST {{address}}/auth/register
 Content-Type: application/json
 
 {
-    "email": "Negar123@example.com",
+    "email": "sara@example.com",
     "password": "password",
-    "username": "Negar"
+    "username": "sara"
 } 
 
-### Create an Event
-POST {{address}}/events
+### Login User
+POST {{address}}/auth/login
 Content-Type: application/json
 
 {
-    "name": "Attendee Test ",
-    "owner_id": 2,
-    "description": "This is Attendee description",
+    "email": "sara@example.com",
+    "password": "password"
+}
+
+### Create an Event
+
+POST {{address}}/events
+Content-Type: application/json
+Authorization: Bearer your_token
+
+{
+    "name": "JWT Test ",
+    "owner_id": 5,
+    "description": "This is JWT description",
     "date": "2023-10-10",
     "location": "Test Location"
 }
