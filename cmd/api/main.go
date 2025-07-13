@@ -10,7 +10,7 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 )
 
-type application struct {
+type Application struct {
 	port      int
 	jwtSecret string
 	models    database.Models
@@ -28,7 +28,7 @@ func main() {
 	defer db.Close()
 
 	models := database.NewModels(db)
-	app := &application{
+	app := &Application{
 		port:      env.GetEnvInt("PORT", 8080),
 		jwtSecret: env.GetEnvString("JWT_SECRET", "secret"),
 		models:    models,

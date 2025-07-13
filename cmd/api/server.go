@@ -9,7 +9,7 @@ import (
 
 // server starts a new HTTP server listening on the port specified in the
 // application configuration.
-func (app *application) serve() error {
+func (app *Application) serve() error {
 	server := &http.Server{
 		Addr:         fmt.Sprintf(":%d", app.port),
 		Handler:      app.routes(),

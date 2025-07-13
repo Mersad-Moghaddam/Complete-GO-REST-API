@@ -14,7 +14,7 @@ type registerRequest struct {
 	UserName string `json:"username" binding:"required,min=2"`
 }
 
-func (app *application) registerUser(c *gin.Context) {
+func (app *Application) registerUser(c *gin.Context) {
 	var req registerRequest
 	if err := c.ShouldBindJSON(&req); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
