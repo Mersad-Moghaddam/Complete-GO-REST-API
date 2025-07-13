@@ -4,10 +4,20 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	swaggerFiles "github.com/swaggo/files"     // correct alias
+	ginSwagger "github.com/swaggo/gin-swagger" // correct alias
 )
 
 func (app *Application) routes() http.Handler {
 	g := gin.Default()
+
+	// Serve Swagger UI at /swagger/index.html
+	g.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+
+	// Redirect /swagger to /swagger/index.html for convenience
+	g.GET("/swagger", func(c *gin.Context) {
+		c.Redirect(http.StatusMovedPermanently, "/swagger/index.html")
+	})
 
 	v1 := g.Group("/api/v1")
 	{

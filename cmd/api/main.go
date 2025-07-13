@@ -6,9 +6,25 @@ import (
 	"go-rest/internal/env"
 	"log"
 
+	_ "go-rest/docs" // Import generated Swagger docs
+
 	_ "github.com/joho/godotenv/autoload" // Automatically load .env file
 	_ "github.com/mattn/go-sqlite3"
+	// Swagger handler
+	// Swagger files
 )
+
+// @title GO Gin Rest API
+// @version 1.0
+// @description This is a sample Go Gin REST API
+// @securityDefinitions.apiKey BearerAuth
+// @in header
+// @name Authorization
+// @description Enter your JWT Bearer Token in format **bearer &lt;token&gt;**
+// @contact.url https://github.com/Mersad-Moghaddam/Complete-GO-REST-API
+// @host localhost:8080
+// @BasePath /api/v1
+// @schemes http https
 
 type Application struct {
 	port      int

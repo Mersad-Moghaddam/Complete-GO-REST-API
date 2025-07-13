@@ -25,6 +25,15 @@ type loginResponse struct {
 	Token string `json:"token"`
 }
 
+// @Summary Login user
+// @Description Login with email and password
+// @Tags Auth
+// @Accept json
+// @Produce json
+// @Param loginRequest body loginRequest true "Login credentials"
+// @Success 200 {object} loginResponse
+// @Failure 400,401,404,500 {object} map[string]string
+// @Router /auth/login [post]
 func (app *Application) login(c *gin.Context) {
 	var auth loginRequest
 	if err := c.ShouldBindJSON(&auth); err != nil {
@@ -58,6 +67,15 @@ func (app *Application) login(c *gin.Context) {
 
 }
 
+// @Summary Register user
+// @Description Register a new user
+// @Tags Auth
+// @Accept json
+// @Produce json
+// @Param registerRequest body registerRequest true "Registration info"
+// @Success 201 {object} database.User
+// @Failure 400,500 {object} map[string]string
+// @Router /auth/register [post]
 func (app *Application) registerUser(c *gin.Context) {
 	var req registerRequest
 	if err := c.ShouldBindJSON(&req); err != nil {
