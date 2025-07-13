@@ -18,9 +18,9 @@ POST {{address}}/events
 Content-Type: application/json
 
 {
-    "name": "API Learn",
-    "owner_id": 1,
-    "description": "This is an GOlang description",
+    "name": "Attendee Test ",
+    "owner_id": 2,
+    "description": "This is Attendee description",
     "date": "2023-10-10",
     "location": "Test Location"
 }
@@ -48,4 +48,17 @@ Content-Type: application/json
 
 ### Retrieve Single Event
 GET {{address}}/events/3
+Content-Type: application/json
+
+
+### Create an Attendee
+POST {{address}}/events/3/attendees/1
+Content-Type: application/json
+
+### Retrieve all Attendees
+GET {{address}}/events/3/attendees
+Content-Type: application/json
+
+### Delete Attendee
+DELETE {{address}}/events/3/attendees/1
 Content-Type: application/json

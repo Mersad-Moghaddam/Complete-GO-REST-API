@@ -49,7 +49,7 @@ func (m *AttendeeModel) GetAttendeesByEvent(eventId int) ([]*User, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
 	defer cancel()
 
-	query := "SELECT u.* FROM attendees a JOIN users u ON a.user_id = u.id WHERE a.event_id = $1"
+	query := "SELECT u.id, u.username, u.email FROM users u  JOIN attendees a ON u.id = a.user_id WHERE a.event_id = $1"
 	rows, err := m.DB.QueryContext(ctx, query, eventId)
 	if err != nil {
 		return nil, err
@@ -72,7 +72,7 @@ func (m *AttendeeModel) GetAttendeesByEvent(eventId int) ([]*User, error) {
 func (m *AttendeeModel) Delete(eventId int, userId int) error {
 	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
 	defer cancel()
-	query := "DELETE FROM attendees WHERE id = $1"
+	query := "DELETE FROM attendees WHERE event_id = $1, user_id = $2 "
 	_, err := m.DB.ExecContext(ctx, query, userId, eventId)
 	if err != nil {
 		return err

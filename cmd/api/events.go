@@ -182,7 +182,7 @@ func (app *Application) deleteAttendeeFromEvent(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid event ID"})
 		return
 	}
-	userID, err := strconv.Atoi(c.Param("userID"))
+	userID, err := strconv.Atoi(c.Param("user_id"))
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid user ID"})
 		return
@@ -194,7 +194,7 @@ func (app *Application) deleteAttendeeFromEvent(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, nil)
+	c.JSON(http.StatusOK, "Attendee Delete Successfully")
 }
 
 func (app *Application) getEventsByAttendee(c *gin.Context) {
